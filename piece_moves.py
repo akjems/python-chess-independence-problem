@@ -4,20 +4,12 @@ from create_board import create_initial_positions
 from edge_checker import column
 
 ## TODO i should always start at 1
-
 # King, Queen, , Rook, Bishop, Knight get a function to define what pieces they threaten on M x N board
-
 # Function takes M,N, List of Array of available squares and outputs list of arrays updated available squares for each position on avaliable squares.
-
-
 # Basic function structure repeated for each piece type
-
-
 
 def king_position_avaliable( M,N, board ):
     """ M is number of rows, N is number of columns, board is list, dict? with avaliable board positions
-
-    TODO remove position if king on left right edges of board, use N values.
     """
     
     king_values_dict = {}
@@ -33,10 +25,8 @@ def king_position_avaliable( M,N, board ):
         current_row = math.ceil(i/N)
 
         #Only this part changes for each piece so maybe new function with only this.
-        print(f'i: {i}, current_column: {current_column}, current_row: {current_row}')
         if column(i+1,N) > current_column:
             threatened.append(i+1)
-            print(f'Add (i+1):{i+1}')
             threatened.append(i+N+1)
             threatened.append(i-N+1)
         if column(i-1,N) < current_column:     
@@ -53,7 +43,6 @@ def king_position_avaliable( M,N, board ):
         threatened = [item for item in threatened if item > 0]
         threatened = [item for item in threatened if item <= M*N]
 
-        #print(f'{i} : {threatened}')
         avaliable_squares = [x for x in board if x not in threatened]
  
         # key is a list of squares with pieces in it
@@ -63,8 +52,6 @@ def king_position_avaliable( M,N, board ):
 
 def knight_position_avaliable( M,N, board ):
     """ M is number of rows, N is number of columns, board is list, dict? with avaliable board positions
-
-    TODO remove position if king on edge of board, use M & N values
     """
     i=0
     knight_values_dict = {}
@@ -101,7 +88,6 @@ def knight_position_avaliable( M,N, board ):
         threatened = [item for item in threatened if item > 0]
         threatened = [item for item in threatened if item <= M*N]
 
-        print(f'{i} : {threatened}')
         avaliable_squares = [x for x in board if x not in threatened]
  
         knight_values_dict[i]=avaliable_squares
@@ -125,10 +111,6 @@ def rook_position_avaliable( M,N, board ):
 
         # Horizontal
         for t in range (1,N):
-            # Need to check I am in the same row as i,
-            #print(f'')
-            #print(f'current_row: {current_row}: i = {i}: t = {t}: math.ceil((i+t)/N)={math.ceil((i+t)/N)}')
-            #print(f'i+t: {i+t}')
             if math.ceil((i+t)/N) == current_row:
                 threatened.append(i+t)
             if math.ceil((i-t)/N) == current_row:
@@ -147,7 +129,7 @@ def rook_position_avaliable( M,N, board ):
         threatened = [item for item in threatened if item > 0]
         threatened = [item for item in threatened if item <= M*N]
 
-        print(f'{i} : {threatened}')
+
         avaliable_squares = [x for x in board if x not in threatened]
  
         rook_values_dict[i]=avaliable_squares
@@ -217,10 +199,6 @@ def queen_position_avaliable( M,N, board ):
 
         # Horizontal
         for t in range (1,N):
-            # Need to check I am in the same row as i,
-            #print(f'')
-            #print(f'current_row: {current_row}: i = {i}: t = {t}: math.ceil((i+t)/N)={math.ceil((i+t)/N)}')
-            #print(f'i+t: {i+t}')
             if math.ceil((i+t)/N) == current_row:
                 threatened.append(i+t)
             if math.ceil((i-t)/N) == current_row:
@@ -267,10 +245,3 @@ def queen_position_avaliable( M,N, board ):
  
     
     return (queen_values_dict)
-
-
-M=4
-N=3
-board = create_initial_positions(M,N)
-#print(f'Kings: {king_position_avaliable( M,N, board)}')
-print(f'Knights: {knight_position_avaliable( M,N, board)}')

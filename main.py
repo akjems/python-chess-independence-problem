@@ -18,7 +18,7 @@ if start_data:
     kings = king_position_avaliable(M,N,board)
     knights = knight_position_avaliable(M,N,board)
 
-    add_piece_to_board(kings, knights)
+    #add_piece_to_board(kings, knights)
     
 
 
