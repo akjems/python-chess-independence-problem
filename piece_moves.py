@@ -57,17 +57,16 @@ def king_position_avaliable( M,N, board ):
     return (king_values_dict)
 
 def knight_position_avaliable( M,N, board ):
-    """ M is number of rows, N is number of columns, board is list, dict? with avaliable board positions
-    """
+
     i=0
-    knight_values_dict = {}
     knight_values_list = []
     for i in board:
         # calculate avaliable positions at each knight position by removing unavailable squares.
-        avaliable_squares = []
-        threatened = []
+        avaliable_squares = set(board)
+
+        threatened = set()
         # Not threatened but must also be removed from threatened squares
-        threatened.append(i)
+        threatened.add(i)
         
         #Only this part changes for each piece so maybe new function with only this.
 
@@ -75,30 +74,32 @@ def knight_position_avaliable( M,N, board ):
         current_row = math.ceil(i/N)
 
         if column(i+2*N+1,N) == current_column+1:
-            threatened.append(i+2*N+1)
-            threatened.append(i-2*N+1)
+            threatened.add(i+2*N+1)
+            threatened.add(i-2*N+1)
 
         
         if column(i+2*N-1,N) == current_column-1:
-            threatened.append(i+2*N-1)
-            threatened.append(i-2*N-1)
+            threatened.add(i+2*N-1)
+            threatened.add(i-2*N-1)
         
         if column(i+N-2,N) == current_column-2:
-            threatened.append(i+N-2)
-            threatened.append(i-N-2)
+            threatened.add(i+N-2)
+            threatened.add(i-N-2)
 
         if column(i+N+2,N) == current_column+2:
-            threatened.append(i+N+2)
-            threatened.append(i-N+2)
+            threatened.add(i+N+2)
+            threatened.add(i-N+2)
 
         # Remove squares above or below the board
-        threatened = [item for item in threatened if item > 0]
-        threatened = [item for item in threatened if item <= M*N]
+        for elem in list(threatened):
+            if elem <= 0:
+                threatened.discard(elem)
+        for elem in list(threatened):
+            if elem > M*N:
+                threatened.discard(elem)
 
-        avaliable_squares = [x for x in board if x not in threatened]
- 
-        knight_values_dict[i]=avaliable_squares
-        knight_values_list.append(([i],avaliable_squares))
+        avaliable_squares.difference_update(threatened)
+        knight_values_list.append(({i},avaliable_squares))
 
     
     return (knight_values_list)
@@ -147,21 +148,20 @@ def rook_position_avaliable( M,N, board ):
 
 def bishop_position_avaliable( M,N, board ):
     """ 
-    Returns list of tuples with available squares for a given position
-    M is number of rows, N is number of columns, board is list
+    Returns set of tuples with available squares for a given position
+    M is number of rows, N is number of columns, board is list of values on board
     """
     i=0
-    bishop_values_dict = {}
     bishop_values_list=[]
+    
     for i in board:
+        avaliable_squares = set(board)
         # calculate avaliable positions at each bishop position by removing unavailable squares.
-        avaliable_squares = []
-        threatened = []
+        threatened = set()
         # Not threatened but must also be removed from threatened squares
-        threatened.append(i)
+        threatened.add(i)
         
         current_column = column(i,N)
-        
         current_row = math.ceil(i/N)
 
         # Diagonal is limted by shortest side
@@ -170,26 +170,26 @@ def bishop_position_avaliable( M,N, board ):
             #print(f'i: {i}, current_column: {current_column}, current_row: {current_row}')
             # column must be greater than i column
             if column(i+N*t+t,N) > current_column:
-                threatened.append(i+N*t+t)
+                threatened.add(i+N*t+t)
             if column(i-N*t+t,N) > current_column:
-                threatened.append(i-N*t+t)
+                threatened.add(i-N*t+t)
 
             # column must be less than i column
             if column(i+N*t-t,N) < current_column:
-                threatened.append(i+N*t-t)
+                threatened.add(i+N*t-t)
             if column(i-N*t-t,N) < current_column:
-                threatened.append(i-N*t-t)
-       
+                threatened.add(i-N*t-t)
+        
         # Remove squares above or below the board
-        threatened = [item for item in threatened if item > 0]
-        threatened = [item for item in threatened if item <= M*N]
+        for elem in list(threatened):
+            if elem <= 0:
+                threatened.discard(elem)
+        for elem in list(threatened):
+            if elem > M*N:
+                threatened.discard(elem)
 
-        #print(f'{i} : {threatened}')
-        avaliable_squares = [x for x in board if x not in threatened]
- 
-        #bishop_values_dict[i]=avaliable_squares
-        bishop_values_list.append(([i],avaliable_squares))
-    
+        avaliable_squares.difference_update(threatened)
+        bishop_values_list.append(({i},avaliable_squares))
     return (bishop_values_list)
 
 def queen_position_avaliable( M,N, board ):
