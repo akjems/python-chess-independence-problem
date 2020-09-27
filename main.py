@@ -22,26 +22,64 @@ if start_data:
     print(f"Calculating for {knights} knights")
     print(f"Board size MxN: {M}x{N}\n")
 
+    number_of_pieces = kings+queens+rooks+bishops+knights
 
     board = create_board(M,N)
+  
+    pieces=0  
+    print(f'number of pieces: {number_of_pieces}')
+    while pieces<number_of_pieces:
+        pieces+=1
+        # First run start with any that has more than one
+        if pieces==1:
+            if kings > 0:
+                start_board=king_position_avaliable(M,N, board)
+                kings = kings -1
+            elif queens > 0:
+                start_board=queen_position_avaliable(M,N, board)
+                queens = queens - 1
+            elif rooks > 0:
+                start_board=rook_position_avaliable(M,N, board)
+                rooks = rooks - 1
+            elif bishops > 0:
+                start_board=bishop_position_avaliable(M,N, board)
+                bishops = bishops - 1
+            elif knights > 0:
+                start_board=knight_position_avaliable(M,N,board)
+                knights= knights-1
+        #print(f'start_board: {start_board}\n')
+        print(f'Number of Combinations with {pieces} pieces: {len(start_board)}')
 
-    # setups is a list of tuples of occupied and avaliable squares. Length of setups is answer to challenge
-    # setups = [([occupied_squares],[       avaliable_squares           ]           )...]
-                     #add key here,    add avaliable_squares here
-                # each new piece added, only keep avaliable squares that duplicate
+        if kings > 0:
+            new_piece=king_position_avaliable(M,N, board)
+            kings = kings -1
+            updated_board=add_piece_to_board(start_board, new_piece)
+            start_board=updated_board
+        elif queens > 0:
+            new_piece=queen_position_avaliable(M,N, board)
+            queens = queens - 1
+            updated_board=add_piece_to_board(start_board, new_piece)
+            start_board=updated_board
+        elif rooks > 0:
+            new_piece=rook_position_avaliable(M,N, board)
+            rooks = rooks - 1
+            updated_board=add_piece_to_board(start_board, new_piece)
+            start_board=updated_board
+        elif bishops > 0:
+            new_piece=bishop_position_avaliable(M,N, board)
+            bishops = bishops - 1
+            updated_board=add_piece_to_board(start_board, new_piece)
+            start_board=updated_board
+        elif knights > 0:
+            new_piece=knight_position_avaliable(M,N,board)
+            knights= knights-1
+            updated_board=add_piece_to_board(start_board, new_piece)
+            start_board=updated_board
+        else:
+            None
+ 
 
-    #TODO Loop over add_piece_to_board until all pieces are added
-    i = 1
-    while i <= bishops:
-        bishop_positions=bishop_position_avaliable(M,N, board)
-        i +=1
-    i = 1
-    while i <= knights:
-        knight_positions=knight_position_avaliable(M,N,board)
-        i +=1
-    
-    i = i
-    add_piece_to_board(bishop_positions, knight_positions)
+    print(f'Number of Combinations FINAL: {len(start_board)}')
 
 else:
     print('Thank you, come again')

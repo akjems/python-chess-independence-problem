@@ -28,7 +28,7 @@ def start_menu():
         queens = 0
         rooks = 0
         bishops = 1
-        knights = 1
+        knights = 2
 
     #Check for quick wins before running rest of program
 
@@ -38,9 +38,9 @@ def start_menu():
     elif 0 == kings+queens+rooks+bishops+knights:
         result = 0
         print(f'No pieces on board. Result: {result}')
-    #elif 1 == kings+queens+rooks+bishops+knights:
-    #    result = M*N
-    #    print(f'Only 1 piece on board. Result: {result}')
+    elif 1 == kings+queens+rooks+bishops+knights:
+        result = M*N
+        print(f'Only 1 piece on board. Result: {result}')
     else:
         parameters = {'M': M, 'N':N, "kings": kings, "queens": queens, "rooks": rooks, "bishops": bishops, "knights": knights}
         return (parameters)
