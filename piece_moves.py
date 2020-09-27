@@ -1,3 +1,9 @@
+# This file contains the functions for the different pieces, returning avaliable squares for a board size M x N.
+"""
+Returns list of tuples with available squares for a given position
+    M is number of rows, N is number of columns, board is list
+"""
+#TODO Have king, queen, rook return list instead of dictionary
 
 import math
 from create_board import create_initial_positions
@@ -55,6 +61,7 @@ def knight_position_avaliable( M,N, board ):
     """
     i=0
     knight_values_dict = {}
+    knight_values_list = []
     for i in board:
         # calculate avaliable positions at each knight position by removing unavailable squares.
         avaliable_squares = []
@@ -91,8 +98,10 @@ def knight_position_avaliable( M,N, board ):
         avaliable_squares = [x for x in board if x not in threatened]
  
         knight_values_dict[i]=avaliable_squares
+        knight_values_list.append(([i],avaliable_squares))
+
     
-    return (knight_values_dict)
+    return (knight_values_list)
 
 def rook_position_avaliable( M,N, board ):
     """ M is number of rows, N is number of columns, board is list, dict? with avaliable board positions
@@ -137,10 +146,13 @@ def rook_position_avaliable( M,N, board ):
     return (rook_values_dict)
 
 def bishop_position_avaliable( M,N, board ):
-    """ M is number of rows, N is number of columns, board is list, dict? with avaliable board positions
+    """ 
+    Returns list of tuples with available squares for a given position
+    M is number of rows, N is number of columns, board is list
     """
     i=0
     bishop_values_dict = {}
+    bishop_values_list=[]
     for i in board:
         # calculate avaliable positions at each bishop position by removing unavailable squares.
         avaliable_squares = []
@@ -175,9 +187,10 @@ def bishop_position_avaliable( M,N, board ):
         #print(f'{i} : {threatened}')
         avaliable_squares = [x for x in board if x not in threatened]
  
-        bishop_values_dict[i]=avaliable_squares
+        #bishop_values_dict[i]=avaliable_squares
+        bishop_values_list.append(([i],avaliable_squares))
     
-    return (bishop_values_dict)
+    return (bishop_values_list)
 
 def queen_position_avaliable( M,N, board ):
     """ Combin bishop with rook

@@ -1,6 +1,6 @@
-# This class creates and maintains the list of avaliable positions
+# These functions create and maintain the list of avaliable positions for each piece added to the board
 
-def create_initial_positions (M,N):
+def create_board (M,N):
     number_of_squares = M*N
     positions = []
     # Needs to include final square
@@ -8,17 +8,14 @@ def create_initial_positions (M,N):
         positions.append(i)
     return (positions)
 
-def dict_initial_board (M,N, board):
+def create_initial_positions(M,N, board):
     dict_empty_board={}
     for i in board:
-        # calculate avaliable positions at each king position by removing unavaiable squares.
-        avaliable_squares = []
-        threatened = []
+        # calculate avaliable positions at each king position by removing unavailable squares.
+        avaliable_squares = board
         # Not threatened but must also be removed from threatened squares
-        threatened.append(i)
-        
-        avaliable_squares = [x for x in board if x not in threatened]
 
-        empty_board_values[i]=avaliable_squares
+        dict_empty_board[i]=avaliable_squares
 
-        return(dict_empty_board)
+
+    return(dict_empty_board)
