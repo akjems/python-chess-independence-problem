@@ -7,52 +7,33 @@ Returns list of tuples with available squares for a given position
 import math
 from create_board import create_initial_positions
 from edge_checker import column
+from squares import *
+from piece_threats import *
 
-## TODO i should always start at 1
+## TODO use squares_avaliable in squares and delete this file.
 # King, Queen, , Rook, Bishop, Knight get a function to define what pieces they threaten on M x N board
 # Function takes M,N, List of Array of available squares and outputs list of arrays updated available squares for each position on avaliable squares.
 # Basic function structure repeated for each piece type
 
 def king_position_avaliable( M,N, board ):
-    """ M is number of rows, N is number of columns, board is list, dict? with avaliable board positions
+    """ M is number of rows, N is number of columns, board is list
+        Calculate avaliable positions at each king position by removing unavailable squares.
     """
-
     king_values_list=[]
     i=1
     for i in board:
-        # calculate avaliable positions at each king position by removing unavailable squares.
-        avaliable_squares = set(board)
-        threatened = set()
-        # Not threatened but must also be removed from threatened squares
-        threatened.add(i)
-        
+        avaliable_squares = create_set(board)
+        threatened=create_threatened(i)
         current_column = column(i,N)
-        current_row = math.ceil(i/N)
 
-        #Only this part changes for each piece so maybe new function with only this.
-        if column(i+1,N) > current_column:
-            threatened.add(i+1)
-            threatened.add(i+N+1)
-            threatened.add(i-N+1)
-        if column(i-1,N) < current_column:     
-            threatened.add(i-1)
-            threatened.add(i+N-1)
-            threatened.add(i-N-1)
-        
-        if column(i+N,N) == current_column:
-            threatened.add(i+N)
-        if column(i-N,N) == current_column:
-            threatened.add(i-N)
+        # This is the only line that changes, so instead single function for all pieces and then this line can be switch.
+        threatened=king_threats(N,i,current_column,threatened)
 
         # Remove squares above or below the board
-        for elem in list(threatened):
-            if elem <= 0:
-                threatened.discard(elem)
-        for elem in list(threatened):
-            if elem > M*N:
-                threatened.discard(elem)
-
-        avaliable_squares.difference_update(threatened)
+        threatened=trim_threatened(threatened,M*N)
+        
+        # remove threatehented squares
+        avaliable_squares = update_avaliable_squares(threatened, avaliable_squares)
 
         # key is a list of squares with pieces in it
         king_values_list.append((frozenset({i}),frozenset(avaliable_squares)))
