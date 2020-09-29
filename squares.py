@@ -2,20 +2,7 @@ from edge_checker import column
 from piece_threats import *
 
 
-def create_threatened(i):
-    threatened = set()
-    threatened.add(i)
-    return (threatened)
 
-def trim_threatened(threatened,board_size):
-    """ Remove squares over or below the board"""
-    for elem in list(threatened):
-        if elem <= 0:
-            threatened.discard(elem)
-    for elem in list(threatened):
-        if elem > board_size:
-            threatened.discard(elem)
-    return(threatened)
 
 def create_set(size):
     return(set(size))
@@ -37,12 +24,24 @@ def squares_avaliable( M,N, board, piece ):
         current_column = column(i,N)
 
         # This is the only line that changes, so instead single function for all pieces and then this line can be switch.
-        threatened=king_threats(N,i,current_column,threatened)
+        
+        if piece=="king":
+            threatened=king_threats(N,i,current_column,threatened)
+        elif piece=="queen":
+            threatened=king_threats(N,i,current_column,threatened)
+        elif piece=="rook":
+            threatened=king_threats(N,i,current_column,threatened)
+        elif piece=="bishop":
+            threatened=king_threats(N,i,current_column,threatened)
+        elif piece=="knight":
+            threatened=king_threats(N,i,current_column,threatened)
+        else:
+            print('all pieces accounted for')
 
         # Remove squares above or below the board
         threatened=trim_threatened(threatened,M*N)
         
-        # remove threatehented squares
+        # remove threatened squares
         avaliable_squares = update_avaliable_squares(threatened, avaliable_squares)
 
         # key is a list of squares with pieces in it

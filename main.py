@@ -1,4 +1,4 @@
-from create_board import *
+from board import *
 from menu import start_menu
 from piece_moves import *
 from combination_creator import *
@@ -31,47 +31,59 @@ if start_data:
     while pieces<number_of_pieces:
         pieces+=1
         # First run start with any that has more than one
+        # TODO make this better
+        # TODO Add predication of how long calculation will take
         if pieces==1:
             if kings > 0:
-                start_board=king_position_avaliable(M,N, board)
+                piece="king"
+                start_board=squares_avaliable( M,N, board, piece )
                 kings = kings -1
             elif queens > 0:
-                start_board=queen_position_avaliable(M,N, board)
+                piece="queen"
+                start_board=squares_avaliable( M,N, board, piece )
                 queens = queens - 1
             elif rooks > 0:
-                start_board=rook_position_avaliable(M,N, board)
+                piece="rook"
+                start_board=squares_avaliable( M,N, board, piece )
                 rooks = rooks - 1
             elif bishops > 0:
-                start_board=bishop_position_avaliable(M,N, board)
+                piece="bishop"
+                start_board=squares_avaliable( M,N, board, piece )
                 bishops = bishops - 1
             elif knights > 0:
-                start_board=knight_position_avaliable(M,N,board)
+                piece="knight"
+                start_board=squares_avaliable( M,N, board, piece )
                 knights= knights-1
         #print(f'start_board: {start_board}\n')
         print(f'Number of Combinations with {pieces} pieces: {len(start_board)}')
 
         if kings > 0:
-            new_piece=king_position_avaliable(M,N, board)
+            piece="king"
+            new_piece = squares_avaliable( M,N, board, piece )
             kings = kings -1
             updated_board=add_piece_to_board(start_board, new_piece)
             start_board=updated_board
         elif queens > 0:
-            new_piece=queen_position_avaliable(M,N, board)
+            piece="queen"
+            new_piece=squares_avaliable( M,N, board, piece )
             queens = queens - 1
             updated_board=add_piece_to_board(start_board, new_piece)
             start_board=updated_board
         elif rooks > 0:
-            new_piece=rook_position_avaliable(M,N, board)
+            piece="rook"
+            new_piece=squares_avaliable( M,N, board, piece )
             rooks = rooks - 1
             updated_board=add_piece_to_board(start_board, new_piece)
             start_board=updated_board
         elif bishops > 0:
-            new_piece=bishop_position_avaliable(M,N, board)
+            piece="bishop"
+            new_piece=squares_avaliable( M,N, board, piece )
             bishops = bishops - 1
             updated_board=add_piece_to_board(start_board, new_piece)
             start_board=updated_board
         elif knights > 0:
-            new_piece=knight_position_avaliable(M,N,board)
+            piece="knight"
+            new_piece=squares_avaliable( M,N, board, piece )
             knights= knights-1
             updated_board=add_piece_to_board(start_board, new_piece)
             start_board=updated_board
