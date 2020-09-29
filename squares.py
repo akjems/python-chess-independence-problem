@@ -28,13 +28,13 @@ def squares_avaliable( M,N, board, piece ):
         if piece=="king":
             threatened=king_threats(N,i,current_column,threatened)
         elif piece=="queen":
-            threatened=king_threats(N,i,current_column,threatened)
+            threatened=queen_threats(M,N,i,current_column,threatened)
         elif piece=="rook":
-            threatened=king_threats(N,i,current_column,threatened)
+            threatened=rook_threats(M,N,i,current_column,threatened)
         elif piece=="bishop":
-            threatened=king_threats(N,i,current_column,threatened)
+            threatened=bishop_threats(M,N,i,current_column,threatened)
         elif piece=="knight":
-            threatened=king_threats(N,i,current_column,threatened)
+            threatened=knight_threats(N,i,current_column,threatened)
         else:
             print('all pieces accounted for')
 

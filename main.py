@@ -1,6 +1,7 @@
 from board import *
 from menu import start_menu
-from piece_moves import *
+from squares import *
+
 from combination_creator import *
 
 
