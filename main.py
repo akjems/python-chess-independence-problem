@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from board import *
 from menu import start_menu
 from squares import *

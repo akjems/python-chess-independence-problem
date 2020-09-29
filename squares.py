@@ -43,7 +43,7 @@ def squares_avaliable( M,N, board, piece ):
         
         # remove threatened squares
         avaliable_squares = update_avaliable_squares(threatened, avaliable_squares)
-
+        print(f'M, N, piece, avaliable squares: {M}, {N}, {piece}, {avaliable_squares}')
         # key is a list of squares with pieces in it
         squares_avaliable_list.append((frozenset({i}),frozenset(avaliable_squares)))
     
