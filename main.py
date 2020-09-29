@@ -57,6 +57,7 @@ if start_data:
                 knights= knights-1
         #print(f'start_board: {start_board}\n')
         print(f'Number of Combinations with {pieces} pieces: {len(start_board)}')
+        
 
         if kings > 0:
             piece="king"

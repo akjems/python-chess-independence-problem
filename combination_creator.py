@@ -1,7 +1,7 @@
 def add_piece_to_board(current_setup, new_piece):
     """
     Combines an existing setup with possible positions of an added piece to create a new board setup.
-    Meant to be run in loop with addition of each new piece.
+    To be run in loop with addition of each new piece.
     """
     set_a_sets=current_setup
 
@@ -24,11 +24,12 @@ def add_piece_to_board(current_setup, new_piece):
             # Checks if positions overlap
             #if min(set_a_sets[i][0]) in set_b_sets[p][0]:
             check = list(set_a_sets)[i][0]
+            #print(f'len(check): {len(check)}')
 
             if check.issubset((list(set_b_sets)[p][0])):
                 None
             else:
-               
+                #print(f"list(set_b_sets)[p][1]): {len(list(set_b_sets)[p][1])}")
                 if list(set_a_sets)[i][0].issubset(list(set_b_sets)[p][1]) & list(set_b_sets)[p][0].issubset(list(set_a_sets)[i][1]):
 
                     first_tuple=list(set_b_sets)[p][0].union(list(set_a_sets)[i][0])
@@ -37,6 +38,7 @@ def add_piece_to_board(current_setup, new_piece):
                     #print(f'{first_tuple}, {second_tuple}\n')
 
                     set_c_sets.add((first_tuple,second_tuple))
+                    #print(f'len(set_c_sets): {len(set_c_sets)} ')
             p+=1
         i+=1
     
