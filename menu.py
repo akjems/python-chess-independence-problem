@@ -23,12 +23,12 @@ def start_menu():
         knights = 1
     else:
         M = 2
-        N = 3
+        N = 2
         kings = 0
-        queens = 0
+        queens = 2
         rooks = 0
-        bishops = 1
-        knights = 2
+        bishops = 0
+        knights = 0
 
     #Check for quick wins before running rest of program
 
