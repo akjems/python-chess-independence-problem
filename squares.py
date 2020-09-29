@@ -1,4 +1,4 @@
-from edge_checker import column
+from board import column
 from piece_threats import *
 
 
