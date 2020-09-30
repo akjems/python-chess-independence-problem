@@ -27,7 +27,7 @@ def squares_avaliable( M,N, piece ):
         # This is the only line that changes, so instead single function for all pieces and then this line can be switch.
         
         if piece=="king":
-            threatened=king_threats(N,i,current_column,threatened)
+            threatened=king_threats(M,N,i,current_column,threatened)
         elif piece=="queen":
             threatened=queen_threats(M,N,i,current_column,threatened)
         elif piece=="rook":
@@ -35,7 +35,7 @@ def squares_avaliable( M,N, piece ):
         elif piece=="bishop":
             threatened=bishop_threats(M,N,i,current_column,threatened)
         elif piece=="knight":
-            threatened=knight_threats(N,i,current_column,threatened)
+            threatened=knight_threats(M,N,i,current_column,threatened)
         else:
             print('all pieces accounted for')
 

@@ -4,7 +4,7 @@ Whatever I do with the current approach I don't think I can make it 200x. 10x ru
 
 ## Different approaches
 
-I don't need to know the positions, only how many combinations there are. Therefore calculating each position and then counting them up is the long way round to the answer. So maybe I can get mathematically lucky and find a formula that does it for me or more exactingly, create a neural net that can calculate number of combinations based the training set I can now create using my existing program. 
+I don't need to know the positions, only how many combinations there are. Therefore calculating each position and then counting them up is the long way round to the answer. So maybe I can get mathematically lucky and find a formula that does it for me or more excitingly, create a neural net that can calculate number of combinations based the training set I can now create using my existing program.
 
 ### Mathematically Lucky
 
