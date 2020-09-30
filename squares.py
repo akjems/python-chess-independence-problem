@@ -1,4 +1,4 @@
-from board import column
+from board import column, create_board
 from piece_threats import *
 
 
@@ -12,10 +12,11 @@ def update_avaliable_squares(threatened, avaliable_squares):
     avaliable_squares.difference_update(threatened)
     return(avaliable_squares)
 
-def squares_avaliable( M,N, board, piece ):
+def squares_avaliable( M,N, piece ):
     """ M is number of rows, N is number of columns, board is list
         Calculate avaliable positions at each king position by removing unavailable squares.
     """
+    board = create_board(M,N)
     squares_avaliable_list=[]
     i=1
     for i in board:
@@ -43,7 +44,7 @@ def squares_avaliable( M,N, board, piece ):
         
         # remove threatened squares
         avaliable_squares = update_avaliable_squares(threatened, avaliable_squares)
-        print(f'M, N, piece, avaliable squares: {M}, {N}, {piece}, {avaliable_squares}')
+        #print(f'M, N, piece, avaliable squares: {M}, {N}, {piece}, {avaliable_squares}')
         # key is a list of squares with pieces in it
         squares_avaliable_list.append((frozenset({i}),frozenset(avaliable_squares)))
     

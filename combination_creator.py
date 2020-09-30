@@ -26,6 +26,7 @@ def add_piece_to_board(current_setup, new_piece):
             check = list(set_a_sets)[i][0]
             #print(f'len(check): {len(check)}')
 
+            # is this a waste of a check?
             if check.issubset((list(set_b_sets)[p][0])):
                 None
             else:

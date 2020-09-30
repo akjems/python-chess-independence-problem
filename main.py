@@ -10,6 +10,7 @@ from combination_creator import *
 start_data = start_menu()
 print(start_data)
 
+
 if start_data:
     M = start_data.get('M')
     N = start_data.get('N')
@@ -27,7 +28,7 @@ if start_data:
 
     number_of_pieces = kings+queens+rooks+bishops+knights
 
-    board = create_board(M,N)
+    
   
     pieces=0  
     print(f'number of pieces: {number_of_pieces}')
