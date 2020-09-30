@@ -15,26 +15,44 @@ from combination_creator import *
         bishops = 1
         knights = 1
 """
+# There hahs to be a mathematical shortcut to solve this
 
-start_board_1=squares_avaliable( 6,9, "king" )
+board_options_1=squares_avaliable( 6,9, "queen" )
+new_piece = squares_avaliable( 6,9, "rook")
+board_options_1=add_piece_to_board(board_options_1, new_piece)
+print(f'B1 completed: {len(board_options_1)}')
+
+
+board_options_2 = squares_avaliable( 6,9, "bishop")
+board_options_2=add_piece_to_board(board_options_2, new_piece)
 new_piece = squares_avaliable( 6,9, "king")
-updated_board_1=add_piece_to_board(start_board_1, new_piece)
-new_piece = squares_avaliable( 6,9, "queen")
-updated_board_1=add_piece_to_board(updated_board_1, new_piece)
-print(f'Board 1: {len(updated_board_1)}')
+board_options_2=add_piece_to_board(board_options_2, new_piece)
+print(f'B2 completed: {len(board_options_2)}')
 
 
-start_board_2=squares_avaliable( 6,9, "rook" )
-new_piece = squares_avaliable( 6,9, "bishop")
-updated_board_2=add_piece_to_board(start_board_2, new_piece)
+board_options_3 = squares_avaliable( 6,9, "bishop")
 new_piece = squares_avaliable( 6,9, "knight")
-updated_board_2=add_piece_to_board(updated_board_2, new_piece)
-print(f'Board 2: {len(updated_board_2)}')
+board_options_3=add_piece_to_board(board_options_3, new_piece)
+print(f'B3 completed: {len(board_options_3)}')
 
 
+board_options_4 = add_piece_to_board(board_options_3, board_options_1)
+print(f'B1+B3 completed: {len(board_options_4)}')
 
-final_board=add_piece_to_board(updated_board_2, updated_board_1)
-print(f'Final Board: {len(final_board)}')
+board_options_5 = add_piece_to_board(board_options_3, board_options_4)
+print(f'B3+B4 completed: {len(board_options_5)}')
+
+"""
+start_board_3=squares_avaliable( 6,9, "rook" )
+new_piece = squares_avaliable( 6,9, "queen")
+updated_board_3=add_piece_to_board(start_board_3, new_piece)
+new_piece = squares_avaliable( 6,9, "bishop")
+updated_board_3=add_piece_to_board(updated_board_3, new_piece)
+print(f'Board 3: R, Q, B: {len(updated_board_3)}')
+"""
+
+#final_board=add_piece_to_board(board_options_2, board_options_1)
+#print(f'Final Board: {len(final_board)}')
 
 
 
