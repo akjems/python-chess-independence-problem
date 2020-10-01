@@ -35,3 +35,16 @@ Finally, look for alternative approaches, and post code in forum to ask for comm
 * How to post online with calculations running client side?
   
 
+## Notes
+
+frozensets
+
+.copy
+.union
+.intersection
+.difference
+.symettric_difference
+
+isdisjoing
+issubset
+issuperset
