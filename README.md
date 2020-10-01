@@ -37,7 +37,9 @@ Finally, look for alternative approaches, and post code in forum to ask for comm
 
 ## Notes
 
-frozensets
+Membership testing with sets and dictionaries is much faster, O(1), than searching sequences, O(n). When testing "a in b", b should be a set or dictionary instead of a list or tuple. 
+
+frozensets, frozensets are immutable sets. They are not faster than regular sets.
 
 .copy
 .union
@@ -45,6 +47,6 @@ frozensets
 .difference
 .symettric_difference
 
-isdisjoing
+isdisjoint
 issubset
 issuperset
