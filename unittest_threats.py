@@ -41,7 +41,7 @@ class QueenThreatsTestCase(unittest.TestCase):
     def test_queen_2x5_1(self):
         i=1
         result = trim_threatened(queen_threats(2,5,i,1,{i}), 10)
-        self.assertEqual(result, {1,2,3,4,5,6})
+        self.assertEqual(result, {1,2,3,4,5,6,7})
 
     def test_queen_3x3_5(self):
         i=5
@@ -95,15 +95,15 @@ class KnightThreatsTestCase(unittest.TestCase):
         result = trim_threatened(knight_threats(2,2,i,1,{i}), 3)
         self.assertEqual(result, {3})
 
-    def test_knight_8x8_32(self):
-        i=32
-        result = trim_threatened(knight_threats(8,8,32,8,{i}), 64)
-        self.assertEqual(result, {1})
+    def test_knight_8x8_29(self):
+        i=29
+        result = trim_threatened(knight_threats(8,8,29,5,{i}), 64)
+        self.assertEqual(result, {12,14,19,23,29,35,39,44,46})
 
     def test_knight_4x4_16(self):
         i=16
         result = trim_threatened(knight_threats(4,4,i,4,{i}), 16)
-        self.assertEqual(result, {1})
+        self.assertEqual(result, {7,16,10})
 
 if __name__ == '__main__':
     unittest.main()

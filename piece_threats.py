@@ -65,7 +65,6 @@ def rook_threats (M,N,i,current_column, threatened):
         # Need 0 because last column has no remainder
         if math.ceil((i+(t*N))%N) == current_column or math.ceil((i+(t*N))%N) ==  0:
             threatened.add(i+(t*N))
-            #print(f'Added: {i+(t*N)}')
         if math.ceil((i-(t*N))%N) == current_column or math.ceil((i-(t*N))%N) ==  0:
             threatened.add(i-(t*N))
     return (threatened)
@@ -89,5 +88,5 @@ def knight_threats (M,N,i,current_column, threatened):
 def queen_threats(M, N,i, current_column, threatened):
     #TODO make sure this works as expected
     threatened=bishop_threats(M,N,i,current_column,threatened)
-    threatened=rook_threats(M, N,i,current_column,threatened)
+    threatened=rook_threats(M,N,i,current_column,threatened)
     return(threatened)
