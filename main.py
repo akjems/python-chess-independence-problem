@@ -4,7 +4,7 @@ from board import *
 from menu import start_menu
 from squares import *
 
-from combination_creator_2 import add_piece_to_board
+from combination_creator import add_piece_to_board
 
 
 start_data = start_menu()
@@ -34,7 +34,6 @@ if start_data:
     while pieces<number_of_pieces:
         pieces+=1
         # First run start with any that has more than one
-        # TODO make this better
         # TODO Add predication of how long calculation will take
         if pieces==1:
             if kings > 0:
