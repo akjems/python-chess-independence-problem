@@ -86,7 +86,6 @@ def knight_threats (M,N,i,current_column, threatened):
 
 
 def queen_threats(M, N,i, current_column, threatened):
-    #TODO make sure this works as expected
     threatened=bishop_threats(M,N,i,current_column,threatened)
     threatened=rook_threats(M,N,i,current_column,threatened)
     return(threatened)

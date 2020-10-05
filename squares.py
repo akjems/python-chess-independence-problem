@@ -47,6 +47,7 @@ def squares_avaliable(M,N, piece ):
         avaliable_squares = update_avaliable_squares(threatened, avaliable_squares)
         #print(f'M, N, piece, avaliable squares: {M}, {N}, {piece}, {avaliable_squares}')
         # key is a list of squares with pieces in it
+        
         # NOTE changed from tuple to frozenset
         squares_avaliable_set.add(frozenset({frozenset({i}),frozenset(avaliable_squares)}))
     

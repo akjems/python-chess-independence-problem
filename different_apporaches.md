@@ -23,3 +23,7 @@ MxN determines what percentage of each pieces location is optimal or weakest.
 ### Neural Net
 
 Make sure current program is correct and generate thousands of combinations with (M, N, pieces, number_of_combinations). Stick input and outputs into a neureal net and hope it finds a repeatedable pattern.
+
+### Set removal
+
+Just remove occupied and threatened squares from the start list. 

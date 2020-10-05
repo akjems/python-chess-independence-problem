@@ -37,7 +37,9 @@ Finally, look for alternative approaches, and post code in forum to ask for comm
 
 ## Notes
 
-Membership testing with sets and dictionaries is much faster, O(1), than searching sequences, O(n). When testing "a in b", b should be a set or dictionary instead of a list or tuple. 
+Membership testing with sets and dictionaries is much faster, O(1), than searching sequences, O(n). When testing "a in b", b should be a set or dictionary instead of a list or tuple.
+ -but-
+  Because set is an unordered collection. Since no order is expected, it makes no sense to retrieve an element at given position - it is expected to be random.
 
 frozensets, frozensets are immutable sets. They are not faster than regular sets.
 
