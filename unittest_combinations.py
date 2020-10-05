@@ -2,7 +2,7 @@ import unittest
 
 import sys
 from squares import squares_available
-from combination_creator_2 import add_piece_to_board
+from combination_creator import add_piece_to_board
 
 class SquaresAvailableTestCase(unittest.TestCase):
 # Pass into test (N,i, current_column, threatened), board_size)

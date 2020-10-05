@@ -1,9 +1,6 @@
 from board import column, create_board
 from piece_threats import *
 
-
-
-
 def create_set(size):
     return(set(size))
 
@@ -57,3 +54,16 @@ def squares_available(M,N, piece ):
         
     
     return (squares_available_dict)
+
+def duplicate_piece_cleaner(availabe_with_duplicates):
+    list_of_keys = list(availabe_with_duplicates.keys())
+    i=0
+    while i < len(list_of_keys):
+        j = list_of_keys[i][0]
+        k = list_of_keys[i][1]
+        i+=1
+    print(f'j: {j}, k: {k}')
+    
+    return ()
+
+
