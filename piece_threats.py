@@ -7,6 +7,11 @@ def create_threatened(i):
     threatened.add(i)
     return (threatened)
 
+def create_occupied(i):
+    occupied = (i,)
+    return (occupied)
+
+
 def trim_threatened(threatened,board_size):
     """ Remove squares over or below the board"""
     for elem in list(threatened):
@@ -18,7 +23,8 @@ def trim_threatened(threatened,board_size):
     return(threatened)
 
 def king_threats (M,N,i, current_column, threatened):
-
+    """ Returns set of threatend squares
+    """
     if column(i+1,N) > current_column:
         threatened.add(i+1)
         threatened.add(i+N+1)

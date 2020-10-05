@@ -43,6 +43,8 @@ Membership testing with sets and dictionaries is much faster, O(1), than searchi
 
 frozensets, frozensets are immutable sets. They are not faster than regular sets.
 
+Lists are mutable and therefore cannot be used as dict keys, instead I use tuples as the dict key and a frozenset as the available values
+
 .copy
 .union
 .intersection
