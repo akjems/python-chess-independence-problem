@@ -48,11 +48,11 @@ if start_data:
                 piece="rook"
                 start_board=squares_available( M,N, piece )
                 rooks = rooks - 1
+                print(start_board)
             elif bishops > 0:
                 piece="bishop"
                 start_board=squares_available( M,N, piece )
                 bishops = bishops - 1
-                print(start_board)
             elif knights > 0:
                 piece="knight"
                 start_board=squares_available( M,N, piece )
@@ -94,7 +94,7 @@ if start_data:
         else:
             None
  
-
+    print(f'Combinations: {start_board}')
     print(f'Number of Combinations FINAL: {len(start_board)}')
 
 else:
