@@ -3,7 +3,7 @@
 
 
 def start_menu():
-    user_defined = input("Run assignment numbers, 6x9 board with 2 Kings, 1 Queen, 1 Bishop, 1 Rook and 1 Knight ? (y/n/t) ")
+    user_defined = input("Run assignment numbers, 6x9 board with 2 Kings, 1 Queen, 1 Bishop, 1 Rook and 1 Knight ? (y/n) ")
     if user_defined == 'n':
         # TODO Check input validity, only ints allowed
         M = int(input("How many rows ? (0+): "))
@@ -21,17 +21,11 @@ def start_menu():
         rooks = 1
         bishops = 1
         knights = 1
-    else:
-        M = 2
-        N = 3
-        kings = 0
-        queens = 0
-        rooks = 0
-        bishops = 1
-        knights = 2
 
+    parameters = {'M': M, 'N':N, "kings": kings, "queens": queens, "rooks": rooks, "bishops": bishops, "knights": knights}
+    return (parameters)
     #Check for quick wins before running rest of program
-
+"""
     if M*N <= kings+queens+rooks+bishops+knights:
         result = 0
         print(f'More pieces than spaces on board. Result: {result}')
@@ -44,4 +38,4 @@ def start_menu():
     else:
         parameters = {'M': M, 'N':N, "kings": kings, "queens": queens, "rooks": rooks, "bishops": bishops, "knights": knights}
         return (parameters)
-    
+"""    
