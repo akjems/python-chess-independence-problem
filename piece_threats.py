@@ -23,7 +23,9 @@ def trim_threatened(threatened,board_size):
     return(threatened)
 
 def king_threats (M,N,i, current_column, threatened):
-    """ Returns set of threatend squares
+    """
+    Returns set of squares threatened by king
+    One each direction fro initial position
     """
     if column(i+1,N) > current_column:
         threatened.add(i+1)
@@ -40,11 +42,19 @@ def king_threats (M,N,i, current_column, threatened):
     return (threatened)
 
 def bishop_threats (M,N,i, current_column, threatened):
- # Diagonal is limted by shortest side
+    """
+    Returns set of squares threatened by bishop
+    Diagonals from initial position
+    :param M:
+    :param N:
+    :param i:
+    :param current_column:
+    :param threatened:
+    :return:
+    """
     shortest_side = min(M,N)
     for t in range (1,shortest_side):
-            #print(f'i: {i}, current_column: {current_column}, current_row: {current_row}')
-            # column must be greater than i column
+
         if column(i+N*t+t,N) > current_column:
             threatened.add(i+N*t+t)
         if column(i-N*t+t,N) > current_column:
@@ -92,6 +102,15 @@ def knight_threats (M,N,i,current_column, threatened):
 
 
 def queen_threats(M, N,i, current_column, threatened):
+    """
+    Queen threats are combination of rook and bishop threats
+    :param M:
+    :param N:
+    :param i:
+    :param current_column:
+    :param threatened:
+    :return:
+    """
     threatened=bishop_threats(M,N,i,current_column,threatened)
     threatened=rook_threats(M,N,i,current_column,threatened)
     return(threatened)

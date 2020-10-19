@@ -26,4 +26,4 @@ Make sure current program is correct and generate thousands of combinations with
 
 ### Set removal
 
-Just remove occupied and threatened squares from the start list. 
+Just remove occupied and threatened squares from the start list. This is what I'm doing.
