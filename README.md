@@ -1,9 +1,8 @@
 # python-chess-independence-problem
 
 started: 2020/09/17
-ended: 2020/10/05
 
-Written in Python 3.8.5
+Written for Python 3.9.0
 
 ## About
 
@@ -41,7 +40,7 @@ Follow on screen instructions.
 
 #### (2020-11-16)
 
-* Applied changes recommended by reddit user iamaperson3133 
+* Applied changes recommended by reddit user 
 
 ### 0.4 (2020-10-12)
 
