@@ -1,6 +1,8 @@
 import unittest
 
-from piece_threats import bishop_threats, trim_threatened, rook_threats, king_threats, queen_threats, knight_threats
+from piece_threats import bishop_threats, trim_threatened, \
+    rook_threats, king_threats, queen_threats, knight_threats
+
 
 class KingThreatsTestCase(unittest.TestCase):
 # Pass into test (N,i, current_column, threatened), board_size)
@@ -102,6 +104,7 @@ class KnightThreatsTestCase(unittest.TestCase):
         i = 16
         result = trim_threatened(knight_threats(4,4,i,4,{i}), 16)
         self.assertEqual(result, {7,16,10})
+
 
 if __name__ == '__main__':
     unittest.main()

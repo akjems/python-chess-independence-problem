@@ -8,6 +8,7 @@ from menu import start_menu
 from squares import *
 from combination_creator import add_piece_to_board
 
+
 def main() -> None:
     """
     Logic to run the chess solver with no arguments
@@ -40,7 +41,7 @@ def main() -> None:
                 if kings > 0:
                     piece="king"
                     piece_tracker.append(piece)
-                    start_board=squares_available( M,N, piece )
+                    start_board=squares_available(M,N, piece)
                     kings = kings -1
                 elif queens > 0:
                     piece="queen"
@@ -50,44 +51,45 @@ def main() -> None:
                 elif rooks > 0:
                     piece = "rook"
                     piece_tracker.append(piece)
-                    start_board = squares_available( M,N, piece )
+                    start_board = squares_available(M,N, piece)
                     rooks = rooks - 1
                 elif bishops > 0:
                     piece = "bishop"
                     piece_tracker.append(piece)
-                    start_board=squares_available( M,N, piece )
+                    start_board=squares_available(M,N, piece)
                     bishops = bishops - 1
                 elif knights > 0:
                     piece = "knight"
                     piece_tracker.append(piece)
                     start_board = squares_available( M,N, piece )
                     knights = knights-1
-            print(f'Number of Combinations with {pieces} pieces: {len(start_board)}')
+            print(f'Number of Combinations with {pieces} pieces: '
+                  f'{len(start_board)}')
             if kings > 0:
                 piece = "king"
                 piece_tracker.append(piece)
-                new_piece = squares_available( M,N, piece )
+                new_piece = squares_available(M,N, piece )
                 kings = kings -1
                 updated_board = add_piece_to_board(start_board, new_piece)
                 start_board = updated_board
             elif queens > 0:
                 piece="queen"
                 piece_tracker.append(piece)
-                new_piece=squares_available( M,N, piece )
+                new_piece=squares_available(M,N, piece)
                 queens = queens - 1
                 updated_board=add_piece_to_board(start_board, new_piece)
                 start_board=updated_board
             elif rooks > 0:
                 piece="rook"
                 piece_tracker.append(piece)
-                new_piece=squares_available( M,N, piece )
+                new_piece=squares_available(M,N, piece)
                 rooks = rooks - 1
                 updated_board = add_piece_to_board(start_board, new_piece)
                 start_board=updated_board
             elif bishops > 0:
                 piece="bishop"
                 piece_tracker.append(piece)
-                new_piece = squares_available( M,N, piece )
+                new_piece = squares_available(M,N, piece)
                 bishops = bishops - 1
                 updated_board = add_piece_to_board(start_board, new_piece)
                 start_board=updated_board
@@ -95,7 +97,7 @@ def main() -> None:
             elif knights > 0:
                 piece = "knight"
                 piece_tracker.append(piece)
-                new_piece = squares_available( M,N, piece )
+                new_piece = squares_available(M,N, piece)
                 knights = knights-1
                 updated_board = add_piece_to_board(start_board, new_piece)
                 start_board = updated_board
