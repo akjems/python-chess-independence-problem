@@ -1,15 +1,16 @@
+import math
 from board import column
 
-import math
 
 def create_threatened(i):
     threatened = set()
     threatened.add(i)
-    return (threatened)
+    return threatened
+
 
 def create_occupied(i):
     occupied = (i,)
-    return (occupied)
+    return occupied
 
 
 def trim_threatened(threatened,board_size):
@@ -20,7 +21,8 @@ def trim_threatened(threatened,board_size):
     for elem in list(threatened):
         if elem > board_size:
             threatened.discard(elem)
-    return(threatened)
+    return threatened
+
 
 def king_threats (M,N,i, current_column, threatened):
     """
@@ -39,7 +41,8 @@ def king_threats (M,N,i, current_column, threatened):
         threatened.add(i+N)
     if column(i-N,N) == current_column:
         threatened.add(i-N)
-    return (threatened)
+    return threatened
+
 
 def bishop_threats (M,N,i, current_column, threatened):
     """
@@ -54,19 +57,17 @@ def bishop_threats (M,N,i, current_column, threatened):
     """
     shortest_side = min(M,N)
     for t in range (1,shortest_side):
-
         if column(i+N*t+t,N) > current_column:
             threatened.add(i+N*t+t)
         if column(i-N*t+t,N) > current_column:
             threatened.add(i-N*t+t)
-
             # column must be less than i column
         if column(i+N*t-t,N) < current_column:
             threatened.add(i+N*t-t)
         if column(i-N*t-t,N) < current_column:
             threatened.add(i-N*t-t)
-    
-    return (threatened)
+    return threatened
+
 
 def rook_threats (M,N,i,current_column, threatened):
     # Horizontal threats
@@ -83,7 +84,8 @@ def rook_threats (M,N,i,current_column, threatened):
             threatened.add(i+(t*N))
         if math.ceil((i-(t*N))%N) == current_column or math.ceil((i-(t*N))%N) ==  0:
             threatened.add(i-(t*N))
-    return (threatened)
+    return threatened
+
 
 def knight_threats (M,N,i,current_column, threatened):
     if column(i+2*N+1,N) == current_column+1:
@@ -98,7 +100,7 @@ def knight_threats (M,N,i,current_column, threatened):
     if column(i+N+2,N) == current_column+2:
         threatened.add(i+N+2)
         threatened.add(i-N+2)
-    return (threatened)
+    return threatened
 
 
 def queen_threats(M, N,i, current_column, threatened):
@@ -111,6 +113,6 @@ def queen_threats(M, N,i, current_column, threatened):
     :param threatened:
     :return:
     """
-    threatened=bishop_threats(M,N,i,current_column,threatened)
-    threatened=rook_threats(M,N,i,current_column,threatened)
-    return(threatened)
+    threatened = bishop_threats(M,N,i,current_column,threatened)
+    threatened = rook_threats(M,N,i,current_column,threatened)
+    return threatened

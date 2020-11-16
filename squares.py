@@ -1,8 +1,10 @@
 from board import column, create_board
 from piece_threats import *
 
+
 def create_set(size):
     return(set(size))
+
 
 def update_available_squares(threatened, available_squares):
     """
@@ -10,6 +12,7 @@ def update_available_squares(threatened, available_squares):
     """
     available_squares.difference_update(threatened)
     return(available_squares)
+
 
 def squares_available(M,N, piece ):
     """
@@ -24,9 +27,7 @@ def squares_available(M,N, piece ):
         available_squares = create_set(board)
         threatened=create_threatened(i)
         current_column = column(i,N)
-
         # Returning from avaliabe squares is dependent on the piece that is added to the board.
-        
         if piece=="king":
             threatened=king_threats(M,N,i,current_column,threatened)
         elif piece=="queen":
@@ -52,5 +53,5 @@ def squares_available(M,N, piece ):
         squares_available_dict[position]=frozenset(available_squares)
 
     
-    return (squares_available_dict)
+    return squares_available_dict
 

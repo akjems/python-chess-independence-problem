@@ -39,6 +39,10 @@ Follow on screen instructions.
 
 ## ChangeLog
 
+#### (2020-11-16)
+
+* Applied changes recommended by reddit user iamaperson3133 
+
 ### 0.4 (2020-10-12)
 
 * Fixes threat calculations

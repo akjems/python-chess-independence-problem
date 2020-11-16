@@ -1,41 +1,34 @@
-
 # User can run assigned numbers or input own values:
+
+def int_input(msg):
+    """Confirm inputs are ints otherwise provide helpful message"""
+    while True:
+        try:
+            number = input(msg)
+            number = int(number)
+            break
+        except ValueError:
+            print("Only int values allowed.\n"
+                  "An int is a whole number.\n"
+                  "152 is an int, 1.24 is not.")
+            continue
+    return number
 
 
 def start_menu():
-    user_defined = input("Run assignment numbers, 6x9 board with 2 Kings, 1 Queen, 1 Bishop, 1 Rook and 1 Knight ? (y/n) ")
-    if user_defined == 'n':
-        # TODO Check input validity, only ints allowed
-        M = int(input("How many rows ? (0+): "))
-        N = int(input("How many columns ? (0+):"))
-        kings = int(input("How many kings? (0+): "))
-        queens = int(input("How many queens? (0+): "))
-        rooks = int(input("How many rooks? (0+): "))
-        bishops = int(input("How many bishops? (0+): "))
-        knights = int(input("How many knights? (0+): "))
-    elif user_defined == 'y': 
-        M = 6
-        N = 9
-        kings = 2
-        queens = 1
-        rooks = 1
-        bishops = 1
-        knights = 1
-
-    parameters = {'M': M, 'N':N, "kings": kings, "queens": queens, "rooks": rooks, "bishops": bishops, "knights": knights}
-    return (parameters)
-    #Check for quick wins before running rest of program
-"""
-    if M*N <= kings+queens+rooks+bishops+knights:
-        result = 0
-        print(f'More pieces than spaces on board. Result: {result}')
-    elif 0 == kings+queens+rooks+bishops+knights:
-        result = 0
-        print(f'No pieces on board. Result: {result}')
-    elif 1 == kings+queens+rooks+bishops+knights:
-        result = M*N
-        print(f'Only 1 piece on board. Result: {result}')
-    else:
-        parameters = {'M': M, 'N':N, "kings": kings, "queens": queens, "rooks": rooks, "bishops": bishops, "knights": knights}
-        return (parameters)
-"""    
+    m = int_input("How many rows ? (0+): ")
+    n = int_input("How many columns ? (0+):")
+    kings = int_input("How many kings? (0+): ")
+    queens = int_input("How many queens? (0+): ")
+    rooks = int_input("How many rooks? (0+): ")
+    bishops = int_input("How many bishops? (0+): ")
+    knights = int_input("How many knights? (0+): ")
+    parameters = {
+        'M': m, 'N': n,
+        "kings": kings,
+        "queens": queens,
+        "rooks": rooks,
+        "bishops": bishops,
+        "knights": knights
+    }
+    return parameters
